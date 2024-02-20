@@ -1,4 +1,4 @@
-package com.websocket.demo.chat;
+package com.example.Chatdemo.chat;
 
 public enum MessageType {
     CHAT,

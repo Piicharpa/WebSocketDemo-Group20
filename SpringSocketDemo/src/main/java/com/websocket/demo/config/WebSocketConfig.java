@@ -1,4 +1,4 @@
-package com.websocket.demo.config;
+package com.example.Chatdemo.confic;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -6,29 +6,22 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
-@Configuration
+@Configuration //websocket is one of springboots config.
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
-    /*
-    * defined connection endpoint
-    * */
-    @Override
+    @Override //กำหนด path
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws")
-                .setAllowedOriginPatterns("*")
+                .setAllowedOriginPatterns("*")//เปิดรับrequestจากทุกที่
                 .withSockJS();
     }
 
-
-    /**
-     * defined message passing endpoint
-     * @param registry
-     */
-    @Override
+    @Override //กำหนดการรับส่งข้อมูลว่ารับ or boardcast ผ่านทางไหน
     public void configureMessageBroker(MessageBrokerRegistry registry) {
-        registry
-                .setApplicationDestinationPrefixes("/app")
-                .enableSimpleBroker("/topic");
+        registry.setApplicationDestinationPrefixes("/app")//server receive from
+                .enableSimpleBroker("/topic");// server broadcast to
     }
+
+
 }

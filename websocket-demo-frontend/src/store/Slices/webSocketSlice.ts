@@ -17,12 +17,14 @@ interface webSocketState {
     isConnected: boolean;
     stompClient: Stomp.Client | undefined;
     messages: webSocketMessage[] | undefined
+    onlinePersons: number;
 }
 
 const initialState: webSocketState = {
     isConnected: false,
     stompClient: undefined,
-    messages: []
+    messages: [],
+    onlinePersons: 0,
 };
 
 export const webSocketSlice = createSlice({
@@ -37,10 +39,13 @@ export const webSocketSlice = createSlice({
         },
         setStompClient: (state, action : PayloadAction<Stomp.Client>) => {
             state.stompClient = action.payload;
-        }
+        },
+        setOnlinePersons: (state, action: PayloadAction<number>) => {
+            state.onlinePersons = action.payload;
+        },
     },
 });
 
-export const {setIsConnected, appendMessage,setStompClient} = webSocketSlice.actions;
+export const {setIsConnected, appendMessage,setStompClient,setOnlinePersons} = webSocketSlice.actions;
 export default webSocketSlice.reducer;
 export const selectWebSocket = (state: RootState) => state.webSocket;

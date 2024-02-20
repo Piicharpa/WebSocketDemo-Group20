@@ -1,5 +1,4 @@
-package com.websocket.demo.chat;
-
+package com.example.Chatdemo.chat;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -8,7 +7,7 @@ import lombok.Getter;
 @Builder
 public class ChatMessage {
     private String content;
-    private String timestamp;
     private String sender;
+    private String timestamp;
     private MessageType type;
 }

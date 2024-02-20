@@ -4,6 +4,8 @@ import {useState} from "react";
 import {useAppSelector} from "../store/hooks.ts";
 import {selectUsername} from "../store/Slices/usernameSlice.ts"
 import {selectWebSocket, messageType} from "../store/Slices/webSocketSlice.ts";
+
+
 import JoinLeaveMessage from "./joinLeaveMessage.tsx";
 
 export default function ChatBox() {
@@ -18,7 +20,7 @@ export default function ChatBox() {
                     <h1 className="text-3xl font-extrabold text-gray-800">Group Chat</h1>
                     <p className="text-gray-600">Welcome to the chat room!</p>
                     <p>
-                        Online persons : <strong>fix me pls</strong>
+                        Online persons : <strong>{webSocketState.onlinePersons}</strong>
                     </p>
                 </div>
 
